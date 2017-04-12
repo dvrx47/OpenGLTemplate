@@ -1,5 +1,8 @@
 #include "setup.hpp"
 #include "windowRender.hpp"
+#include "keyboard.hpp"
+
+
 
 
 GL_SETUP __SETUP__;
@@ -19,12 +22,20 @@ int main(int argc, char **argv){
     glutDisplayFunc( &renderScene );
     
     glutReshapeFunc(&reshapeScenePersp);
-    //glutKeyboardFunc(NULL); 
-    //glutKeyboardUpFunc(NULL);
+
+    glutKeyboardFunc(keyFunc);
+    glutKeyboardUpFunc(keyUpFunc);
+    glutSpecialFunc(specialKey);
+    glutSpecialUpFunc(specialKeyUp);
+
+    std::thread obslugaKlawiatury( obslugaZdarzenKlawiatury );  
+
+    
 
     setupRC();
 
     glutMainLoop();
+    //obslugaKlawiatury.join();
     glutDestroyWindow( mainWindow );
 
 
