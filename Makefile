@@ -15,5 +15,8 @@ windowRender.o: windowRender.hpp windowRender.cpp
 run: $(FILE_OUT)
 	./$(FILE_OUT)
 
+distclean:
+	rm -f *.prog *.o *.gch
+
 clean:
-	rm *.o *.gch
+	rm -f *.o *.gch
