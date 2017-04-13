@@ -1,6 +1,13 @@
 #include "windowRender.hpp"
 #include "headers.hpp"
 
+extern GLfloat Ox;
+extern GLfloat Oy;
+extern GLfloat Oz;
+
+extern GLfloat Ax;
+extern GLfloat Ay;
+extern GLfloat Az;
 
 
 void renderScene(){
@@ -10,14 +17,21 @@ void renderScene(){
     
 
     
-    //===TEST===========
+    
     glPushMatrix();
-    glTranslatef( 0, 0, -50);
+    glTranslatef( Ox, Oy, Oz);
+    glRotatef( Ax, 1.0, 0.0, 0.0);
+    glRotatef( Ay, 0.0, 1.0, 0.0);
+    glRotatef( Az, 0.0, 0.0, 1.0);
 
+    //===Tutaj kod do nauki===========
+    
     GLfloat cube = 10.0f;
     glutWireCube( cube );
-    glPopMatrix();
+
     //==================
+    glPopMatrix();
+    
 
     
     glutSwapBuffers();

@@ -2,7 +2,15 @@
 #include "windowRender.hpp"
 #include "keyboard.hpp"
 
+GLfloat Ox = 0.0f;
+GLfloat Oy = 0.0f;
+GLfloat Oz = -50.0f;
 
+
+
+GLfloat Ax = 0.0f;
+GLfloat Ay = 0.0f;
+GLfloat Az = 0.0f;
 
 
 GL_SETUP __SETUP__;
@@ -19,9 +27,11 @@ int main(int argc, char **argv){
     __SETUP__.loadSetup();
 
     
-    glutDisplayFunc( &renderScene );
+    glutDisplayFunc( renderScene );
+
+    glutIdleFunc( renderScene ); 
     
-    glutReshapeFunc(&reshapeScenePersp);
+    glutReshapeFunc( reshapeScenePersp);
 
     glutKeyboardFunc(keyFunc);
     glutKeyboardUpFunc(keyUpFunc);
